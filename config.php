@@ -23,11 +23,11 @@ function redirect($url) {
 }
 
 function getUserAvatar($user) {
-    // If user has avatar and file exists, show it
+
     if(isset($user['avatar']) && $user['avatar'] && file_exists($user['avatar'])) {
         return $user['avatar'];
     }
-    // Otherwise show default avatar
+
     return 'assets/default.png';
 }
 ?>
