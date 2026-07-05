@@ -7,9 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Simple favorites table - run this SQL first:
-// CREATE TABLE favorites (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, video_id INT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
-
 $stmt = $pdo->prepare("SELECT v.* FROM videos v JOIN favorites f ON v.id = f.video_id WHERE f.user_id = ? ORDER BY f.created_at DESC");
 $stmt->execute([$_SESSION['user_id']]);
 $favorites = $stmt->fetchAll();
